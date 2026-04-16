@@ -8,4 +8,21 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+
+
+    --chroma: 0.01;
+    --accent: 0.04;
+    --hue: 200;
+
+    --color-bg-dark: oklch(85% var(--chroma) var(--hue));
+    --color-bg: oklch(90% var(--chroma) var(--hue));
+    --color-bg-light: oklch(95% var(--chroma) var(--hue));
+    --color-border: oklch(70% var(--chroma) var(--hue));
+
+
+    --color-text: oklch(10% var(--chroma) var(--hue));
+    --color-text-muted: oklch(30% var(--chroma) var(--hue));
+
+    --color-primary: oklch(30% var(--accent) var(--hue));
+    --color-secondary: oklch(30% var(--accent) calc(var(--hue) + 180));
 }
