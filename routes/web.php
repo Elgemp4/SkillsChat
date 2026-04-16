@@ -10,14 +10,17 @@ Route::get('/', function () {
 
 
 Route::middleware("auth")->group(function () {
-    Route::singleton("profile", \App\Http\Controllers\ProfileController::class);
+    Route::singleton("profile", \App\Http\Controllers\ProfileController::class)->only("show", "update");
     Route::resource("user", \App\Http\Controllers\UserController::class);
-    Route::singleton("settings", \App\Http\Controllers\WebsiteSettingController::class);
+    Route::singleton("settings", \App\Http\Controllers\WebsiteSettingController::class)->only("show", "update");
 });
 
 Route::controller(AuthController::class)->group(function () {
     Route::get("login", "showLogin")->name("login");
     Route::post("login", "login")->name("login");
+    Route::middleware("auth")->group(function () {
+        Route::delete("logout", "logout")->name("logout");
+    });
 });
 
 

@@ -10,9 +10,9 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 
 
-    --chroma: 0.02;
+    --chroma: 0.012;
     --accent: 0.1;
-    --hue: 200;
+    --hue: 120;
 
     --color-bg-dark: oklch(85% var(--chroma) var(--hue));
     --color-bg: oklch(90% var(--chroma) var(--hue));
@@ -33,4 +33,9 @@
 
 .button-primary {
     @apply bg-primary text-bg-light;
+}
+
+
+.button-neutral {
+    @apply bg-bg text-text hover:bg-bg-dark;
 }

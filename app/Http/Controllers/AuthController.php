@@ -19,12 +19,16 @@ class AuthController extends Controller
             "password" => "required"
         ]);
 
-        $user = User::where("name", "=", $creds["name"])->first();
         if(Auth::attempt($creds)){
             return redirect()->route("profile.show");
         }
         else{
             throw ValidationException::withMessages(["name" => "Invalid Credentials", "password" => "Invalid Credentials"]);
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route("login");
     }
 }
