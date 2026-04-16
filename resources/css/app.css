@@ -10,8 +10,8 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 
 
-    --chroma: 0.01;
-    --accent: 0.04;
+    --chroma: 0.02;
+    --accent: 0.1;
     --hue: 200;
 
     --color-bg-dark: oklch(85% var(--chroma) var(--hue));
@@ -23,6 +23,14 @@
     --color-text: oklch(10% var(--chroma) var(--hue));
     --color-text-muted: oklch(30% var(--chroma) var(--hue));
 
-    --color-primary: oklch(30% var(--accent) var(--hue));
-    --color-secondary: oklch(30% var(--accent) calc(var(--hue) + 180));
+    --color-primary: oklch(50% var(--accent) var(--hue));
+    --color-secondary: oklch(50% var(--accent) calc(var(--hue) + 180));
+}
+
+.button{
+    @apply py-2 px-6 rounded-md cursor-pointer;
+}
+
+.button-primary {
+    @apply bg-primary text-bg-light;
 }
