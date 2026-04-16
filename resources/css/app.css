@@ -39,3 +39,12 @@
 .button-neutral {
     @apply bg-bg text-text hover:bg-bg-dark;
 }
+
+
+thead {
+    @apply bg-border;
+}
+
+td, th{
+    @apply p-2 border border-border text-center;
+}

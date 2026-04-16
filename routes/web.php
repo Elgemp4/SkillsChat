@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -13,6 +14,10 @@ Route::middleware("auth")->group(function () {
     Route::singleton("profile", \App\Http\Controllers\ProfileController::class)->only("show", "update");
     Route::resource("user", \App\Http\Controllers\UserController::class);
     Route::singleton("settings", \App\Http\Controllers\WebsiteSettingController::class)->only("show", "update");
+    Route::controller(ChatController::class)->name("chat.")->group(function () {
+        Route::get("chat/{user}", "index")->name("index");
+        Route::get("chat/{user}/{chat}", "show")->name("show");
+    });
 });
 
 Route::controller(AuthController::class)->group(function () {

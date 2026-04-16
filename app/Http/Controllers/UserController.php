@@ -12,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::where("role", "!=", "admin")->get();
+
+        return view("users.index", compact("users"));
     }
 
     /**
@@ -20,7 +22,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = new User();
+        $route = route("user.store", ["user" => $user->id]);
+        $method = "POST";
+        return view("users.edit", compact("user", "route", "method"));
     }
 
     /**
@@ -28,15 +33,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = array_filter($request->validate([
+            "name" => "required",
+            "email" => "required",
+            "token" => "required",
+            "firstname" => "required",
+            "lastname" => "required",
+            "password" => "required",
+        ]));
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
+        User::create($data);
+
+        return redirect()->route("user.index")->with("success", "User created successfully");
     }
 
     /**
@@ -44,7 +52,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $route = route("user.update", ["user" => $user->id]);
+        $method = "PUT";
+        return view("users.edit", compact("user", "route", "method"));
     }
 
     /**
@@ -52,7 +62,20 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = array_filter($request->validate([
+            "name" => "required",
+            "email" => "required",
+            "token" => "required",
+            "firstname" => "required",
+            "lastname" => "required",
+            "password" => "",
+        ]));
+
+        $user->update($data);
+
+        return redirect()->route("user.index")->with("success", "User updated successfully");
+
+
     }
 
     /**
@@ -60,6 +83,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back()->with("success", "User has been deleted");
     }
 }
