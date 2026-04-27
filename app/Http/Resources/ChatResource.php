@@ -15,6 +15,7 @@ class ChatResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            "id" => $this->id,
             "system_prompt" => $this->system_prompt,
             "messages" => MessageResource::collection($this->messages),
         ];
