@@ -5,62 +5,31 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreWebsiteSettingRequest;
 use App\Http\Requests\UpdateWebsiteSettingRequest;
 use App\Models\WebsiteSetting;
+use Illuminate\Http\Request;
 
 class WebsiteSettingController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreWebsiteSettingRequest $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      */
-    public function show(WebsiteSetting $websiteSetting)
+    public function show()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(WebsiteSetting $websiteSetting)
-    {
-        //
+        return view("settings");
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateWebsiteSettingRequest $request, WebsiteSetting $websiteSetting)
+    public function update(Request $request)
     {
-        //
-    }
+        $data = $request->validate([
+            "api_url" => "required",
+            "api_model" => "required",
+            "token_mode" => "required",
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(WebsiteSetting $websiteSetting)
-    {
-        //
+        WebsiteSetting::first()->update($data);
+
+        return back()->with("success", "Website Setting Updated Successfully");
     }
 }

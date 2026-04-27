@@ -22,7 +22,7 @@
                 <nav class="flex flex-col gap-4 px-4">
                     <a class="button button-neutral" href="{{route("profile.show")}}">Profile</a>
                     <a class="button button-neutral" href="{{route("user.index")}}">Users</a>
-                    <a class="button button-neutral" href="{{route("settings.show")}}">Website Setting</a>
+                    <a class="button button-neutral" href="{{route("settings.show")}}">Website Settings</a>
                 </nav>
             </aside>
             <main class="flex-1 px-8 py-16">

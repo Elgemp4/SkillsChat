@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('website_settings', function (Blueprint $table) {
             $table->id();
             $table->string('api_url');
-            $table->string('api_settings');
-            $table->enum('token_mode', ["message", "chars"]);
+            $table->string('api_model');
+            $table->enum('token_mode', ["message", "chars"])->default("message");
             $table->timestamps();
         });
     }

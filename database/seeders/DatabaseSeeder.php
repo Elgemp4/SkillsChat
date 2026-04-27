@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         WebsiteSetting::create([
             "api_url" => "https://openrouter.ai/api/v1/chat/completions",
             "token_mode" => "chars",
-            "api_settings" => ""
+            "api_model" => ""
         ]);
     }
 }
