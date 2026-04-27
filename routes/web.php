@@ -15,8 +15,8 @@ Route::middleware("auth")->group(function () {
     Route::resource("user", \App\Http\Controllers\UserController::class);
     Route::singleton("settings", \App\Http\Controllers\WebsiteSettingController::class)->only("show", "update");
     Route::controller(ChatController::class)->name("chat.")->group(function () {
-        Route::get("chat/{user}", "index")->name("index");
-        Route::get("chat/{user}/{chat}", "show")->name("show");
+        Route::get("chat/{user}", "indexs")->name("indexs");
+        Route::get("chat/{user}/{chat}", "shows")->name("shows");
     });
 });
 

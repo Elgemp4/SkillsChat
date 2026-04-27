@@ -32,7 +32,7 @@ class ApiChatController extends Controller
 
         $chat = Chat::create($data);
 
-        return ChatResource::collection($chat);
+        return $chat->toResource();
     }
 
     /**
@@ -58,7 +58,10 @@ class ApiChatController extends Controller
 
         $response = $apiService->prompt($chat, $message);
 
-
+        return response()->json([
+            "token_left" => auth()->user()->token,
+            "response" => $response->toResource(),
+        ]);
     }
 
     /**

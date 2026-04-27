@@ -32,7 +32,7 @@
                     <td>{{$user->token}}</td>
                     <td>
                         <div class="flex gap-2 items-center justify-center">
-                            <a class="button button-neutral" href="{{route("chat.index", ["user" => $user->id])}}">💬</a>
+                            <a class="button button-neutral" href="{{route("chat.indexs", ["user" => $user->id])}}">💬</a>
                             <a class="button button-neutral" href="{{route("user.edit", ["user" => $user->id])}}">✏️</a>
                             <form action="{{route("user.destroy",  ["user" => $user->id])}}" method="post">
                                 @csrf
